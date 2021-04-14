@@ -18,9 +18,7 @@ set.seed(123)
 
 p <- 10
 
-# Randomly generate the mean and covariance matrices
-
-mu <- runif(p, min=-100, max=100) #Generates 25 random values between -100 and 100
+# Randomly generate the covariance matrices
 
 cov_mat <- cov(matrix(rnorm(p*30), ncol=p))
 
