@@ -48,8 +48,13 @@ msoa_sf %>%
   geom_sf(aes(geometry = geometry, fill = cases)) +
   scale_fill_viridis_c(option = 'turbo') + 
   theme_void() +
-  ggtitle(label = "", subtitle = "The colour shows new COVID-19 cases during the 41st week") +
-  labs(fill = "Cases")
+  labs(fill = "Cases") + 
+  theme(legend.position = "left", 
+        legend.title = element_text(size = 18), 
+        legend.text = element_text(size = 18),
+        legend.key.size = unit(2, 'cm'), 
+        legend.key.height = unit(2, 'cm'), 
+        legend.key.width = unit(2, 'cm'))
 dev.off()
 
 # Network 
@@ -90,7 +95,7 @@ pdf("NetworkMap.pdf", 10, 10)
 ggraph(liverpool_network, layout = "manual", x = LONG_, y = LAT)  +
   geom_sf(data = liverpool_sf, fill = "turquoise1") +
   theme_void() +
-  geom_edge_link(colour = 'white', width = 1) + 
-  geom_node_point(size = degree(liverpool_network), colour = 'black')
+  geom_edge_link(colour = 'white', width = 3) + 
+  geom_node_point(size = degree(liverpool_network)*1.5, colour = 'black')
 dev.off()
 
