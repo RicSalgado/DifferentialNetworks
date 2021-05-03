@@ -27,8 +27,7 @@ ggplot(data=dummy_data, aes(x=x_full, y=V2, group = `Loss Function`, colour = `L
   scale_color_manual(labels = c(expression(L[1]), expression(L[2]), "Huber"), values = c("royalblue1", "tomato", "springgreen4")) +
   theme_bw() + theme(
     legend.title = element_text(size = 16),
-    legend.text = element_text(size = 14)
-  )
+    legend.text = element_text(size = 14), legend.position=c(0.5, 0.8))
 dev.off()
 
 
