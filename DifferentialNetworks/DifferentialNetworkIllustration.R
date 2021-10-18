@@ -159,6 +159,6 @@ deg <- degree(cor_g, mode="all") + 5 # We find the degree of "betweenness" of no
 
 pdf("Network_Diff.pdf",10,10)
 igraph.options(plot.layout=layout.graphopt)
-plot(cor_g , vertex.color=cl$membership+1L, vertex.size = deg*3) 
+plot(cor_g , vertex.color=cl$membership+1L, vertex.size = deg*5, vertex.label.cex = 2) 
 dev.off()
 
