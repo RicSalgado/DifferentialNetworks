@@ -23,7 +23,7 @@ library(ggplot2)
 
 pdf("LossFunctions.pdf",15,10)
 ggplot(data=dummy_data, aes(x=x_full, y=V2, group = `Loss Function`, colour = `Loss Function`)) + 
-  geom_line(size = 1) + xlab("") + ylab(" ") + 
+  geom_line(size = 1) + xlab("y") + ylab("loss function") + 
   scale_color_manual(labels = c("Mean Absolute Error", "Mean Square Error", "Huber"), values = c("royalblue1", "tomato", "springgreen4")) +
   theme_bw() + theme(
     legend.title = element_text(size = 16),
