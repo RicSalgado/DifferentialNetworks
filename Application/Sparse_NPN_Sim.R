@@ -3,7 +3,7 @@ library(dineR)
 n <- 100
 
 p_options <- c(10, 20, 50, 100, 200, 500)
-case <- "asymsparse"
+case <- "sparse"
 
 loss_options <- c("lasso", "d-trace", "scad", "mcp")
 nlambda <- 20
@@ -24,6 +24,9 @@ for(i in 1:length(p_options)){
   
   X <- data$X
   Y <- data$Y
+  
+  X <- npn(X)
+  Y <- npn(Y)
   
   for(j in 1:length(loss_options)){
     
@@ -84,7 +87,7 @@ names(TPR_data) <- c("p", "TPR", "Loss")
 library(ggplot2)
 
 # Time
-pdf("Asymsparse_Sim_Times.pdf",14,8)
+pdf("Sparse_NPN_Sim_Times.pdf",14,8)
 ggplot(data = times_data, aes(x=p, y=Time)) + geom_line(aes(colour=as.factor(Loss)), size = 1.4) +
   xlab("p") + ylab("Time(in seconds)") + 
   scale_color_manual(name = "Loss function", values = c("#1E90FF", "#2E8B57", "#FFA62F", "#C04000"), 
@@ -92,7 +95,7 @@ ggplot(data = times_data, aes(x=p, y=Time)) + geom_line(aes(colour=as.factor(Los
   theme_bw() + theme(text = element_text(size = 17)) 
 dev.off()
 # TPR
-pdf("Asymsparse_Sim_TPR.pdf",14,8)
+pdf("Asymsparse_NPN_TPR.pdf",14,8)
 ggplot(data = TPR_data, aes(fill=as.factor(Loss), y=TPR, x=as.factor(p))) + 
   geom_bar(position="dodge", stat="identity") + xlab("p") + ylab("True Positive Rate") + 
   scale_fill_manual(name = "Loss function", values = c("#1E90FF", "#2E8B57", "#FFA62F", "#C04000"), 

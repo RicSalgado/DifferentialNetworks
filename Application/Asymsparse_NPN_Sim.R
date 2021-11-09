@@ -25,6 +25,9 @@ for(i in 1:length(p_options)){
   X <- data$X
   Y <- data$Y
   
+  X <- npn(X)
+  Y <- npn(Y)
+  
   for(j in 1:length(loss_options)){
     
     result <- estimation(X, Y, loss = loss_options[j], nlambda = nlambda,  
@@ -97,6 +100,5 @@ ggplot(data = TPR_data, aes(fill=as.factor(Loss), y=TPR, x=as.factor(p))) +
   geom_bar(position="dodge", stat="identity") + xlab("p") + ylab("True Positive Rate") + 
   scale_fill_manual(name = "Loss function", values = c("#1E90FF", "#2E8B57", "#FFA62F", "#C04000"), 
                     labels = c("Lasso", "D-trace", "SCAD", "MCP")) + 
-  theme_bw() + coord_cartesian(ylim=c(0.84,1)) + theme(text = element_text(size = 17)) 
+  theme_bw() + coord_cartesian(ylim=c(0.9,1)) + theme(text = element_text(size = 17)) 
 dev.off()
-
